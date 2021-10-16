@@ -38,7 +38,7 @@ runs:
   - name: Generate release
     shell: bash
     run: |
-      if [ "$(versio release --dry-run)" == *" -> "* ] ; then
+      if versio release --dry-run | grep -qF " -> "  ; then
         versio release
       fi
     env:
