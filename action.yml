@@ -16,13 +16,13 @@ inputs:
 outputs:
   version_bump:
     description: Did the version change?
-    value: steps.version_bump.outputs.version_bump
+    value: ${{ steps.version_bump.outputs.version_bump }}
   current_version:
     description: The current version
-    value: steps.current_version.outputs.current_version
+    value: ${{ steps.current_version.outputs.current_version }}
   previous_version:
     description: The previous version
-    value: steps.previous_version.outputs.previous_version
+    value: ${{ steps.previous_version.outputs.previous_version }}
 
 runs:
   using: composite
