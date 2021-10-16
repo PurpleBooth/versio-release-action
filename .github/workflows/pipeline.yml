@@ -38,7 +38,7 @@ jobs:
       uses: PurpleBooth/changelog-action@v0.1.1
       with:
         config: cliff.toml
-        args: --verbose --latest
+        args: --verbose v${{ needs.release.outputs.previous_version }}..v${{ needs.release.outputs.current_version }}
         output: CHANGELOG.md
     - id: create_release
       uses: ncipollo/release-action@v1.8.10
