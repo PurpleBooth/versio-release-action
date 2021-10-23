@@ -28,11 +28,13 @@ runs:
   using: composite
   steps:
   - uses: actions/checkout@v2.3.5
+    name: Checkout the repository
     with:
       fetch-depth: 0
   - uses: chaaz/versio-actions/install@v1.2
     name: Install versio
   - id: previous_version
+    name: Get the previous version
     run: echo ::set-output "name=previous_version::$( versio get --id 1 -v )"
     shell: bash
   - name: Generate release
@@ -46,6 +48,7 @@ runs:
       GITHUB_USER: ${{ github.actor }}
   - run: echo ::set-output "name=current_version::$( versio get --id 1 -v )"
     id: current_version
+    name: Get the current version
     shell: bash
   - run: |
       if [ "$CURR" != "$PREV" ] ; then
@@ -53,6 +56,7 @@ runs:
       fi
     id: version_bump
     shell: bash
+    name: Did the version bump
     env:
       CURR: ${{ steps.current_version.outputs.current_version }}
       PREV: ${{ steps.previous_version.outputs.previous_version }}
