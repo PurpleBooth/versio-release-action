@@ -1,18 +1,5 @@
-name: Generate a changelog
-description: Generate a changelog using git-cliff with a default config
-inputs:
-  config:
-    description: config file location
-    required: false
-    default: cliff.toml
-  args:
-    description: git-cliff arguments
-    required: false
-    default: -v
-  output:
-    description: Output file
-    required: false
-    default: CHANGELOG.md
+name: Release with versio
+description: Release a project using versio
 outputs:
   version_bump:
     description: Did the version change?
