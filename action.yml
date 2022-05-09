@@ -20,6 +20,8 @@ runs:
       fetch-depth: 0
   - uses: chaaz/versio-actions/install@v1.2
     name: Install versio
+    with:
+      version: latest
   - id: previous_version
     name: Get the previous version
     run: echo ::set-output "name=previous_version::$( versio get --id 1 -v )"
