@@ -18,10 +18,8 @@ runs:
     name: Checkout the repository
     with:
       fetch-depth: 0
-  - uses: chaaz/versio-actions/install@v1.2
-    name: Install versio
-    with:
-      version: latest
+  - name: Install versio
+    run: cargo install versio
   - id: previous_version
     name: Get the previous version
     run: echo ::set-output "name=previous_version::$( versio get --id 1 -v )"
