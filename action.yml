@@ -19,7 +19,10 @@ runs:
     with:
       fetch-depth: 0
   - name: Install versio
-    run: cargo install versio
+    run: |
+      sudo apt-get update
+      sudo apt-get install -y libgpgme11-dev
+      cargo install versio
   - id: previous_version
     name: Get the previous version
     run: echo ::set-output "name=previous_version::$( versio get --id 1 -v )"
