@@ -26,7 +26,7 @@ runs:
       cargo install versio
   - id: previous_version
     name: Get the previous version
-    run: echo ::set-output "name=previous_version::$( versio get --id 1 -v )"
+    run: echo "previous_version=$( versio get --id 1 -v )" >> "$GITHUB_OUTPUT"
     shell: bash
   - name: Generate release
     shell: bash
@@ -37,7 +37,7 @@ runs:
     env:
       GITHUB_TOKEN: ${{ github.token }}
       GITHUB_USER: ${{ github.actor }}
-  - run: echo ::set-output "name=current_version::$( versio get --id 1 -v )"
+  - run: echo "current_version=$( versio get --id 1 -v )" >> "$GITHUB_OUTPUT"
     id: current_version
     name: Get the current version
     shell: bash
